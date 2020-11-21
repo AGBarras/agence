@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+      <title>Termes et conditions</title>
+    <meta name="description"
+    content="Holiday rentals, Terms and Conditions">
+    <meta name="keywords"
+    content="holidays, vacances, location, séjour, Crans-Montana, directbooking, termes et conditions">
+    <meta name="robots"
+    content="index, follow">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="terms.css">
+     
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Oswald:wght@300;400&family=Pinyon+Script&family=Playball&family=Satisfy&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;400;200&display=swap" rel="stylesheet">
+        
+        <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    </head>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-storage.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBmBMUXJMxTxpYGkoWvvn69J15gDVipiu0",
+  authDomain: "locationsagb.firebaseapp.com",
+  databaseURL: "https://locationsagb.firebaseio.com",
+  projectId: "locationsagb",
+  storageBucket: "locationsagb.appspot.com",
+  messagingSenderId: "1020006370800",
+  appId: "1:1020006370800:web:bb7c9e0f14319969266135",
+  measurementId: "G-JYYESNBRH1"
+};
+
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var storage = firebase.storage();
+
+  function setBackgrounds(ObjectId){
+
+    var StorageRef=storage.ref();
+    var ImageRef1=StorageRef.child("WELCOME.jpg");
+
+
+  var Section=document.getElementById(ObjectId);
+
+if(Section.id =="section1" || Section.id =="footer" )  {
+      ImageRef1.getDownloadURL().then(function(url){
+        return Section.style.backgroundImage="url("+url+")";
+        Section="";
+      })
+} 
+  }
+
+function dropImage(Id){
+
+  var StorageRef=storage.ref();
+  var logoRef=StorageRef.child("logo.svg");
+  var slogoRef=StorageRef.child("slogo.png");
+
+
+if (Id=="logo"){
+  logoRef.getDownloadURL().then(function(url){
+   // Or inserted into an <img> element:
+  var img = document.getElementById(Id);
+  img.src = url;
+
+}).catch(function(error) {
+  console.log("cant download error is:");
+  console.log(error);
+  // Handle any errors
+});
+} else if (Id=="slogo"){
+  slogoRef.getDownloadURL().then(function(url){
+   // Or inserted into an <img> element:
+  var img = document.getElementById(Id);
+  img.src = url;
+
+}).catch(function(error) {
+  console.log("cant download error is:");
+  console.log(error);
+  // Handle any errors
+});
+}
+}
+//END OF FIREBASE
+</script> 
+    <script>
+    function myFunction() {
+      var x = document.getElementById("darkcover");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    
+    function closeSidebar(){
+        var y= document.getElementById("darkcover");
+        if (y.style.display === "block") {
+        y.style.display = "none";
+      } 
+    
+    }
+
+    function ListProperties(){
+    var list=document.getElementById("property-items");
+    var open=document.getElementById("open_property-items");
+    var close=document.getElementById("close_property-items");
+    list.style.display="block";
+    open.style.display="none";
+    close.style.display="block";
+}
+function CloseProperties(){
+    var list=document.getElementById("property-items");
+    var open=document.getElementById("open_property-items");
+    var close=document.getElementById("close_property-items");
+    list.style.display="none";
+    open.style.display="block";
+    close.style.display="none";
+}
+    
+    </script>
+
+    <body>
+    <div id="burger">
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars fa-2x"></i>
+          </a>
+        </div>
+    
+      <div id="darkcover"> 
+       
+    <div class="w3-sidebar w3-animate-right" style="z-index:3000;" id="sidebar" >
+        <div class="sidebar-close">
+            <i class="fa fa-times fa-1x" aria-hidden="true" onclick="closeSidebar()"></i>
+       </div>
+      <div id="items">
+          <!--CHANGE TO www.agencebarras.ch/fr/directbooking#reservation-->      <p style="font-size: 20px; margin-bottom:0;">  <a href="https://locationsagb.web.app/index.html#reservation" onclick="closeSidebar()"> Réservations </a></p>
+             <button onclick="ListProperties()"><p id="open_property-items" style="margin-bottom:0; font-size: 20px;">Propriétés&nbsp&#9656;</p></button>
+             <button onclick="CloseProperties()"><p id="close_property-items" style="margin-bottom:0; font-size: 20px;">Propriétés&nbsp&#9662;</p></button>
+             <div id="property-items"> 
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-11PALMA2picespour4personnes/418022"> Loc-11 Palma </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-17VALDERRAMA5picespour8personnes/492030"> Loc-17 Valderrama </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-33PALMA2picespour4personnes/478803"> Loc-33 Palma </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-79FLAMINIA4picespour8personnes/492120"> Loc-79 Flaminia </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-85ESTORIL2picespour4personnes/471738"> Loc-85 Estoril </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-93PRFLEURI3picespour4personnes/484056"> Loc-93 Préfleuri </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-110RAINBOW3picespour6personnes/492138"> Loc-110 Rainbow </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-116EUROPE4picespour7personnes/469047"> Loc-116 Europe </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-117RAINBOW4picespour6personnes/492147"> Loc-117 Rainbow </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-158RAINBOW4picespour7personnes/418781"> Loc-158 Rainbow </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-164RSIDENCE4picespour6personnes/492150"> Loc-164 Résidence</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-187ARLEQUIN4picespour6personnes/478761"> Loc-187 Arlequin</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-172FLAMINIA5picespour8personnes/484008"> Loc-172 Flaminia</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-206PALMA4picespour6personnes/483975"> Loc-206 Palma </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-213VALVERT3picespour4personnes/483978"> Loc-213 Val Vert </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-219AMBASSADEURS4picespour6personnes/473610"> Loc-219 Ambassadeurs</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-249GRANDPRS3picespour4personnes/479118"> Loc-249 Grand Près</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-282AMBASSADEURS2picespour3personnes/484089"> Loc-282 Ambassadeurs </a></p>
+             </div>
+          <!--CHANGE TO www.agencebarras.ch/fr/termesetonditions-->      <p style="font-size: 20px;"><a href="https://locationsagb.web.app/terms.html">Termes et conditions</a></p>
+            <p  style="font-size: 20px;"><a href="https://www.agencebarras.ch/fr/HomePage" target="_blank">Accueil</a></p>
+            <p  style="font-size: 20px;"><a href=" https://www.agencebarras.ch/fr/contact" target="_blank">Contact</a></p>
+      </div> 
+    </div>
+    </div> 
+    
+        <div id="section1">
+          <script>setBackgrounds("section1");</script>
+            
+            <img id="logo" alt="logoAGB">
+
+            <script>dropImage("logo");</script>
+          
+            <div id="shadow">
+    
+            </div>
+    
+       <div id="textbox">
+                <h1>Termes et conditions</h1>
+            </div>
+        </div>
+<div id="section2">
+
+  <!-- <p style="text-align: center; "><span style="font-size: 14px;"></span><img src="https://login.smoobu.com/upload/images/summernote_image_121889_5e8b0e3d00093.jpg" style="width: 116.109px; height: 113.242px;">-->
+ 
+    <h1 style="text-align: center; ">
+        <b><font color="#ff0000"><span >CONDITIONS GÉNÉRALES POUR LES LOCATIONS DE VACANCES</span></font></b></h1>
+        <p><br></p>
+        <p><b><span >Arrivée</span></b> <span >: le locataire est prié de venir récupérer les clefs directement à l'agence dès 16h00. Il est prié d'avertir l'agence s'il désire venir avant.</span></p>
+        <p><b><span >Animaux</span></b><span >: les animaux ne sont pas tolérés dans les appartements et chalets, sauf clause spéciale.</span></p>
+        <p><b><span > Règlements</span></b><span>: le locataire se conformera au Règlement de maison et au Règlement de police en vigueur. Il est strictement interdit de fumer dans les lieux loués. </span></p>
+        <p><b><span >Vol:</span></b><span > en aucun cas, le bailleur ne pourra être responsable de tout vol qui pourrait être commis chez le locataire. Ce dernier ne pourra donc réclamer au bailleur aucune indemnité, ni dommages et intérêts. </span></p>
+        <p><b><span >Départ</span></b><span >: le locataire doit quitter l’appartement ou le chalet au plus tard pour 11h. Si ce dernier souhaite modifier l'heure ou le jour de son départ, il est tenu de faire sa demande au moins deux jours à l’avance auprès du service location. L'appartement doit être laissé propre au départ. Si l'appartement est rendu dans un état qui ne correspond pas à un usage normal, des frais de nettoyage seront facturés.</span></p>
+        <p><b><span >Casse</span></b><span >: le locataire est tenu de signaler les dommages causés pendant son séjour. Si des dégâts devaient être découverts après son départ, les frais de réparation ou remplacement lui seront facturés.&nbsp;</span></p>
+        <p><b><span >Heures d’ouverture de l’Agence</span></b><span >:</span></p><ul><li><span >Haute saison, lundi – vendredi: 8h30 – 12h00 / 13h30-18h00, samedi: 9h00-12h00 / 14h00-18h00.</span></li>
+            <li><span > Basse saison, lundi – vendredi: 8h30 – 12h00 / 13h30-18h00, samedi: 9h00-12h00 / 14h00-17h00. </span></li>
+            <li><span >Dimanches et jours fériés : FERMÉ.&nbsp;</span></li></ul>
+        <p><b><span >Saisonnalité</span></b><span >: </span><span >Nos prix varient selon les saisons tel que présentés ci-dessous:</span></p>
+        <ul><li><span>Basse saison:&nbsp;</span><span >1er Avril au 11 Juin, 12 Septembre au 13 Décembre.</span></li>
+            <li><span >Moyenne saison:&nbsp;</span><span >12 Juin au 2 Juillet, 1er Septembre au 12 Septembre, 3 Janvier au 31 Janvier, 7 Mars au 31 Mars.</span></li>
+            <li><span>Haute saison:&nbsp;</span><span >3 Juillet au 31 Aout, 14 Décembre au 2 Janvier, 1 Février au 6 Mars.</span></li></ul>
+       <p> <b>Caution:</b> Le locataire est tenu de verser une caution à l'agence immobilière Gaston Barras au moment de son arrivée. La caution à verser est déterminée de la manière suivante:</p>
+        <ul> <li><span>Studio/2 pièces:&nbsp;</span><span > CHF 300.-</span></li>
+          <li><span>3 pièces/4 pièces:&nbsp;</span><span >CHF 600.-</span></li>
+          <li><span>5 pièces/ Chalet: &nbsp;</span><span >CHF 1'000.-</span></li></ul>
+          <p>La caution lui sera remboursée au moment de son départ après un état des lieux. Il faut compter jusqu'à 7 jours pour le remboursement, sauf cas exceptionnel.</p>
+          <p style="text-align: justify;"><b>Paiements:</b> Lorsque vous réservez sur notre plateforme, notre politique de paiement est la suivante. 50% du montant doit être payé au moment de la réservation, et les 50% restant, au plus tard trois jours avant votre arrivée.</p>
+        <p><b><span>Conditions de bail</span></b><span >: Le chauffage, l'eau, l'électricité et internet sont compris dans le prix de la location. Les frais suivants sont à la charge du locataire:</span></p>
+        <p><span ></span></p><p style="text-align: center; "><b><span >TVA 3.7% sur le prix de location et frais,</span></b></p>
+        <p style="text-align: center;""><b><span >Taxe de séjour (par nuit: CHF 3.- par adulte/ CHF 1.50 par enfant de 6 à 16 ans),</span></b></p><p style="text-align: center; "><b>Blanchissage selon consommation.</b></p>
+        <p style="text-align: justify;"><b>Annulations:</b> En réservant votre séjour sur notre plateforme nous vous offrons un remboursement à 100% jusqu'à 30 jours avant votre arrivée. Par la suite, une annulation entre 30 jours et 1 semaine avant votre arrivée engendrera des frais allant jusqu'à 50% du prix de la location. Toute annulation passée ces délais ne sera pas remboursée.</p>
+        <p style="text-align: justify;"><b><span></span></b></p><p style="text-align: justify;"><b><span >À noter:&nbsp;</span></b>Nos tarifs et politiques intérieurs sont sujets à modifications, sans pour autant qu'elles ne soient mentionnées sur ce site web.&nbsp;Nous nous réservons le droit de refuser une réservation. Les remboursements ne seront pas octroyés en cas de mauvais temps. Nous recommandons fortement à tous nos clients de se procurer une assurance voyage pour toute éventualité.</p>
+        <p><b><span>Autres dispositions</span></b><span>: les dispositions du Code des Obligations.</span></p>
+        <p><br></p>
+        <p><br></p>
+        <p><br></p>
+       
+
+      </div>
+
+ <!--FOOTER = CONTACT INFO-->
+ <footer id="footer" class="footer">
+
+  <!--  <script>setBackgrounds("footer");</script>-->
+  <div id="contact">
+ 
+    <h3  style= "color:rgb(240, 239, 239); ">Contact</h3>
+  <p style= "color:rgb(187, 184, 184); ">Département des locations,<br> Agence Immobilière Gaston&Christian Barras. <br> info@agencebarras.ch <br> (+41) 27 481 27 02. </p>
+
+</div><!--contact-->
+
+
+<div id="menu">
+
+<h3  style= "color:rgb(240, 239, 239);  ">Menu</h3>
+
+<ul>
+<a href="https://www.agencebarras.ch/Portals/www.agencebarras.ch/files/booking/directbooking.html" style="text-decoration: none;"> <li>Réservations</li> </a>
+<a href="https://locationsdevacances.bookingturbo.com/fr/apartments" style="text-decoration: none;"> <li>Propriétés</li> </a>
+<a href="https://www.agencebarras.ch/Portals/www.agencebarras.ch/files/booking/termesetconditions.html" style="text-decoration: none;"> <li>Termes et conditions</li> </a>
+
+</ul>
+
+</div> <!--menu-->
+<div id="agence">
+
+<h3  style= "color:rgb(240, 239, 239); ">Agence</h3>
+<ul>
+<a href="https://www.agencebarras.ch/fr/HomePage" style="text-decoration: none;"><li>Acceuil</li></a>
+<a href="https://www.agencebarras.ch/fr/SearchEngine/Acheter/ByPass/Tous" style="text-decoration: none;"> <li>Achat</li> </a>
+<a href="https://www.agencebarras.ch/fr/contact" style="text-decoration: none;"> <li>Revente</li> </a>
+
+</ul>
+
+</div><!--agence-->
+
+
+<div id="activities">
+<h3  style= "color:rgb(240, 239, 239);  ">Nos activités</h3>
+<ul>
+<a href="http://www.crans-montana-life.ch" style="text-decoration: none;"> <li>La Vie à Crans-Montana</li> </a>
+<a href="https://www.nuitdesneiges.ch" style="text-decoration: none;"> <li>La Nuit des Neiges</li> </a>
+<a href="https://www.omegaeuropeanmasters.com/fr/" style="text-decoration: none;"><li>Omega European Masters</li> </a>
+
+</ul>
+
+</div> <!--activities-->
+</footer>
+
+    
+</body>
+</html>

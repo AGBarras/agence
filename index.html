@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Holiday rentals in Crans-Montana</title>
+    <meta name="description"
+    content="Holiday rentals in Crans-Montana">
+    <meta name="keywords"
+    content="holidays, vacances, location, séjour, Crans-Montana, directbooking">
+    <meta name="robots"
+    content="index, follow">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Oswald:wght@300;400&family=Pinyon+Script&family=Playball&family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;400;200&display=swap" rel="stylesheet">
+    
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+
+
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.1/firebase-storage.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBmBMUXJMxTxpYGkoWvvn69J15gDVipiu0",
+  authDomain: "locationsagb.firebaseapp.com",
+  databaseURL: "https://locationsagb.firebaseio.com",
+  projectId: "locationsagb",
+  storageBucket: "locationsagb.appspot.com",
+  messagingSenderId: "1020006370800",
+  appId: "1:1020006370800:web:bb7c9e0f14319969266135",
+  measurementId: "G-JYYESNBRH1"
+};
+
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var storage = firebase.storage();
+
+  /*function setBackgrounds(ObjectId){
+
+    var StorageRef=storage.ref();
+    var ImageRef1=StorageRef.child("barras_banner.jpg");
+
+
+  var Section=document.getElementById(ObjectId);
+
+if(Section.id =="background" || Section.id =="footer" )  {
+      ImageRef1.getDownloadURL().then(function(url){
+        return Section.style.backgroundImage="url("+url+")";
+        Section="";
+      })
+} 
+  }*/
+
+function dropImage(Id){
+
+  var StorageRef=storage.ref();
+  var logoRef=StorageRef.child("logo.svg");
+  var slogoRef=StorageRef.child("slogo.png");
+
+
+if (Id=="logo"){
+  logoRef.getDownloadURL().then(function(url){
+   // Or inserted into an <img> element:
+  var img = document.getElementById(Id);
+  img.src = url;
+
+}).catch(function(error) {
+  console.log("cant download error is:");
+  console.log(error);
+  // Handle any errors
+});
+} else if (Id=="slogo"){
+  slogoRef.getDownloadURL().then(function(url){
+   // Or inserted into an <img> element:
+  var img = document.getElementById(Id);
+  img.src = url;
+
+}).catch(function(error) {
+  console.log("cant download error is:");
+  console.log(error);
+  // Handle any errors
+});
+}
+}
+//END OF FIREBASE
+</script> 
+
+
+  <script>
+//DARKCOVER
+function myFunction() {
+  var x = document.getElementById("darkcover");
+  var items= document.getElementById("items");
+  var properties= document.getElementById("listed-properties");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+    properties.style.display = "none";
+    items.style.display = "block";
+  }
+}
+
+//SIDEBAR CLOSE
+function closeSidebar(){
+    var openP=document.getElementById("open_nav_prpties");
+  var closeP=document.getElementById("close_nav_prpties");
+    var y= document.getElementById("darkcover");
+    if (y.style.display === "block") {
+    y.style.display = "none";
+    openP.style.display = "block";
+    closeP.style.display = "none";
+  } 
+
+}
+
+//PROPERTIES DROPDOWN NAVIGATION SECTION2
+function DropDown(){
+
+
+var x = document.getElementById("darkcover");
+  var items= document.getElementById("items");
+  var openP=document.getElementById("open_nav_prpties");
+  var closeP=document.getElementById("close_nav_prpties");
+
+  var properties= document.getElementById("listed-properties");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+    properties.style.display = "block";
+    items.style.display = "none";
+    openP.style.display = "none";
+    closeP.style.display = "block";
+
+  }
+
+}
+
+//PROPERTIES DROPDOWN SIDEBAR 
+function ListProperties(){
+    var list=document.getElementById("property-items");
+    var open=document.getElementById("open_property-items");
+    var close=document.getElementById("close_property-items");
+    list.style.display="block";
+    open.style.display="none";
+    close.style.display="block";
+}
+
+//PROPERTIES DROPDOWN SIDEBAR 
+function CloseProperties(){
+    var list=document.getElementById("property-items");
+    var open=document.getElementById("open_property-items");
+    var close=document.getElementById("close_property-items");
+    list.style.display="none";
+    open.style.display="inline-block";
+    close.style.display="none";
+}
+
+</script>
+
+
+
+<body onload="loadFunction()">
+
+<!--TOP RIGHT BURGER-->
+<div id="burger" class="burger">
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars fa-2x"></i>
+      </a>
+    </div>
+
+<!--SIDEBAR-->
+  <div id="darkcover"> 
+   
+<div class="w3-sidebar w3-animate-right" style="z-index:3000;" id="sidebar" >
+    <div class="sidebar-close">
+        <i class="fa fa-times fa-1x" aria-hidden="true" onclick="closeSidebar()"></i>
+   </div>
+  <div id="items">
+         <p style="margin:0;"><a href="#reservation" onclick="closeSidebar()"> Réservations </a></p>
+         <button onclick="ListProperties()"><p id="open_property-items" style="margin-bottom:0;">Propriétés&nbsp&#9656;</p></button>
+         <button onclick="CloseProperties()"><p id="close_property-items" style="margin-bottom:0; padding-top:0px;">Propriétés&nbsp&#9662;</p></button>
+         <div id="property-items"> 
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-11PALMA2picespour4personnes/418022"> Loc-11 Palma </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-17VALDERRAMA5picespour8personnes/492030"> Loc-17 Valderrama </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-33PALMA2picespour4personnes/478803"> Loc-33 Palma </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-79FLAMINIA4picespour8personnes/492120"> Loc-79 Flaminia </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-85ESTORIL2picespour4personnes/471738"> Loc-85 Estoril </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-93PRFLEURI3picespour4personnes/484056"> Loc-93 Préfleuri </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-110RAINBOW3picespour6personnes/492138"> Loc-110 Rainbow </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-116EUROPE4picespour7personnes/469047"> Loc-116 Europe </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-117RAINBOW4picespour6personnes/492147"> Loc-117 Rainbow </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-158RAINBOW4picespour7personnes/418781"> Loc-158 Rainbow </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-164RSIDENCE4picespour6personnes/492150"> Loc-164 Résidence</a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-187ARLEQUIN4picespour6personnes/478761"> Loc-187 Arlequin</a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-172FLAMINIA5picespour8personnes/484008"> Loc-172 Flaminia</a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-206PALMA4picespour6personnes/483975"> Loc-206 Palma </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-213VALVERT3picespour4personnes/483978"> Loc-213 Val Vert </a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-219AMBASSADEURS4picespour6personnes/473610"> Loc-219 Ambassadeurs</a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-249GRANDPRS3picespour4personnes/479118"> Loc-249 Grand Près</a></p>
+          <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-282AMBASSADEURS2picespour3personnes/484089"> Loc-282 Ambassadeurs </a></p>
+         </div>
+<!--CHANGE TO www.agencebarras.ch/fr/termesetonditions-->        <p style="margin-top:0;"><a href="https://www.agencebarras.ch/Portals/www.agencebarras.ch/files/booking/termesetconditions.html" target="_blank">Termes et conditions</a></p>
+        <p><a href="https://www.agencebarras.ch/fr/HomePage" target="_blank">Accueil</a></p>
+        <p><a href="https://www.agencebarras.ch/fr/contact" target="_blank">Contact</a></p>
+  </div> 
+  <div id="listed-properties">
+     <div id="title">
+      <h2>Propriétés</h2>
+    </div>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-11PALMA2picespour4personnes/418022"> Loc-11 Palma </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-17VALDERRAMA5picespour8personnes/492030"> Loc-17 Valderrama </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-33PALMA2picespour4personnes/478803"> Loc-33 Palma </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-79FLAMINIA4picespour8personnes/492120"> Loc-79 Flaminia </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-85ESTORIL2picespour4personnes/471738"> Loc-85 Estoril </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-93PRFLEURI3picespour4personnes/484056"> Loc-93 Préfleuri </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-110RAINBOW3picespour6personnes/492138"> Loc-110 Rainbow </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-116EUROPE4picespour7personnes/469047"> Loc-116 Europe </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-117RAINBOW4picespour6personnes/492147"> Loc-117 Rainbow </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-158RAINBOW4picespour7personnes/418781"> Loc-158 Rainbow </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-164RSIDENCE4picespour6personnes/492150"> Loc-164 Résidence</a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-187ARLEQUIN4picespour6personnes/478761"> Loc-187 Arlequin</a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-172FLAMINIA5picespour8personnes/484008"> Loc-172 Flaminia</a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-206PALMA4picespour6personnes/483975"> Loc-206 Palma </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-213VALVERT3picespour4personnes/483978"> Loc-213 Val Vert </a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-219AMBASSADEURS4picespour6personnes/473610"> Loc-219 Ambassadeurs</a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-249GRANDPRS3picespour4personnes/479118"> Loc-249 Grand Près</a></p>
+    <p><a href="https://locationsdevacances.bookingturbo.com/en/apartment/LOC-282AMBASSADEURS2picespour3personnes/484089"> Loc-282 Ambassadeurs </a></p>
+
+  </div>
+</div>
+</div> 
+
+
+<main>
+   <!--LOGO.SVG IMG--> 
+    <header>
+        <img id="logo" alt="LogoAGB" class="logo">
+
+        <script>dropImage("logo");</script>
+    </header>
+
+
+
+  <!--SECTION1 = MAIN PAGE WRAPPER-->
+<div id="section1" class="introduction">
+
+ <!--WELCOME.JPG BACKGROUND-IMAGE-->   
+        <div id="background">
+
+          <script>setBackgrounds("background");</script>  
+
+   <div id="textbox" class="text">
+            <h1>Bienvenue à <br> Crans-Montana</h1>
+        
+    </div>
+    <!--<div id="booking-tool">
+        <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+        <script>BookingToolIframe.initialize({"url": "https://login.smoobu.com/fr/booking-tool/iframe/121889", "baseUrl": "https://login.smoobu.com", "target": "#booking-tool"})</script>
+        
+    </div>-->
+    <div id="indicator" class="scroll-downs" >
+        <div class="mousey">
+          <div class="scroller"></div>
+        </div>
+      </div>
+  
+    </div>
+
+
+
+ <!--SECTION2 = RESERVATION+IFRAME-->
+   <div id="section2" class="Scontent">
+          <div id="booking">
+            <div id="navigation">
+                
+            <a id="reservation"> <h1 style="opacity:0.6;">Réservations</h1> </a>
+            <ul>
+                <li id="open_nav_prpties" > <button onclick="DropDown()"><p>  Propriétés&nbsp&#9656;</p></button></li> 
+                <li id="close_nav_prpties" ><button><p>Propriétés&nbsp&#9662;</p></button></li>
+ <!--CHANGE TO www.agencebarras.ch/fr/termesetonditions-->               <li><p style="padding-left:0;"><a href="https://www.agencebarras.ch/Portals/www.agencebarras.ch/files/booking/termesetconditions.html" target="_blank">Termes&nbspet&nbspconditions</a></p></li> 
+              <li>  <p style="padding-left:0;"> <a href="https://www.agencebarras.ch/fr/HomePage" target="_blank">Accueil</a></p></li>       
+              <li> <p>  <a href="https://www.agencebarras.ch/fr/contact" target="_blank">Contact</a></p></li>     
+           </ul>
+            </div>
+
+             <!--SIDELOGO, IMG SLODO.png-->
+            <div id="sidelogo">
+                <img id="slogo" alt="">
+                <script>dropImage("slogo");</script>
+             </div>
+        </div><!--booking-->
+        <div id="booking_content">
+          <div id="left">
+            <div id="reservations">
+               
+                <p> Merci pour votre intérêt dans nos propriétés de vacances! Nous vous offrons deux moyens de réserver votre séjour avec nous. </p>
+              
+                <h3 style="text-align:center; font-weight:bold; padding-top: 5%;">Nous faire une demande</h3>
+                <p> Si vous avez des questions avant de réserver, vous pouvez nous écrire et nous vous répondrons dans les 24 heures. Merci d'utiliser <a href="https://www.agencebarras.ch/fr/contact" target="_blank">notre formulaire de contact. </a> </p>
+              <br>
+              </div>
+        
+            <div id="directbooking">
+                <h3 style="text-align:center; font-weight:bold;">Direct Booking</h3>
+                <p> Êtes-vous prêts? Vous pouvez utiliser notre outil de réservation directe ci-dessous. Vous recevrez une confirmation de votre réservation dans les 24 heures.<br> </p>
+                  
+                  <div id="promo" >
+                  <p style="text-align: center;"><b>PROMOTION DU MOMENT:</b><br> Profitez de notre offre du moment en utilisant le code <b> promoAGB</b>, et obtenez directement un <b>rabais de 12% </b>sur votre séjour!
+                  </p>
+                </div>
+                <p style="color: red; text-align: center;">Offre disponible pour tout séjour jusqu'au 30.11.2020 </p>
+                  <p> Vous pouvez consulter nos propriétés disponibles en réservation directe <button onclick="DropDown()" style="width: 20px; font-weight: bold;"> ici</button>.</p>
+               
+               
+
+                <div id="booking-tool-container-allApartments">
+                    <script type="text/javascript" src="https://login.smoobu.com/js/Settings/BookingToolIframe.js"></script>
+                    <script>BookingToolIframe.initialize({"url": "https://login.smoobu.com/fr/booking-tool/iframe/121889", "baseUrl": "https://login.smoobu.com", "target": "#booking-tool-container-allApartments"})</script>
+                    
+                </div>
+                <div id="complementary">
+                <p>"Nous nous réjouissons de vous accueillir et créer avec vous des souvenirs inoubliables à Crans-Montana"</p>
+          
+                <p style=" font-style: normal; font-weight:bold; font-size:20px; text-align:center;"> - Votre équipe des locations</p>
+                </div>
+        
+             
+        
+            </div>
+        
+        </div><!--left-->
+        <div id="right">
+        <div id="terms">
+           
+           
+            <h2 style="text-align:left; font-weight:normal; margin-top:0;">Saisonnalité </h2>
+            <p>Nos prix varient selon les saisons tel que présentés ci-dessous:</p>
+            <p > <span style="font-weight:bold;"> Basse saison: </span> 1er Avril au 11 Juin, 12 Septembre au 13 Décembre. </p>
+            <p> <span style="font-weight:bold;"> Moyenne saison: </span>  12 Juin au 2 Juillet, 1er Septembre au 11 Septembre, 3 Janvier au 31 Janvier, 7 Mars au 31 Mars. </p>
+            <p><span style="font-weight:bold;">Haute saison: </span>  3 Juillet au 31 Aout, 14 Décembre au 2 Janvier, 1 Fevrier au 6 Mars.</p>
+           <br>
+            <h2 style="text-align:left; font-weight:normal; margin-top:0;">À noter </h2>
+            <p style="text-align:justify;"><b>COVID-19:</b> Nous souhaitons rassurer nos clients que nous restons trés attentifs à la situation actuelle, et   que toutes les mesures de préventions nécessaires sont prises afin de  <button onclick="OpenOverlay()" style="text-decoration: underline;">  garantir la sécurité de tous.</button></p>
+          
+            <div id="cover" onclick="closeOverlay()">
+            <div class="covid" id="corona" >
+           <iframe src="CORONA.pdf" width="450px" height="100%"></iframe>
+           </div>
+          </div>
+            <p style="text-align:justify;">Nous acceptons uniquement des séjours d'au moins 1 semaine. Les tarifs et rabais long séjour sont directement disponibles sur la page de la propriété.</p>
+            <!--CHANGE TO www.agencebarras.ch/fr/termesetonditions-->   <p style="text-align:justify;">Nos tarifs et politiques intérieurs sont sujets à modification, sans pour autant qu'elles ne soient mentionnées sur ce site web. Il est recommandé de prendre connaissance de nos <a href="https://www.agencebarras.ch/Portals/www.agencebarras.ch/files/booking/termesetconditions.html" target="_blank">termes et conditions</a>  avant de finaliser l'achat, ainsi que de notre politique d'annulation. </p>
+          
+            <p style="text-align:justify;">Nous nous réservons le droit de refuser une réservation. Les remboursements ne seront pas octroyés en cas de mauvais temps. Nous recommandons fortement à tous nos clients de se procurer une assurance voyage pour toute éventualité.</p>
+           
+          <!-- <div class="proper" id="property" >
+        <p style="text-align:center; padding-top: 50px; font-size:32px;"> No propriétés</p>
+
+          <div class="box">
+          <div class="boxed" style="background-color:green">
+            <img id="1st" src="BED.jpg" alt="">
+            <div class="overlay">
+              <div class="overtext">Hello World</div>
+            </div></div>
+          <div class="boxed" style="background-color:red">
+            <div class="overlay">
+              <div class="overtext">Hello World</div>
+            </div></div>
+         <div class="boxed" style="background-color:blue">
+          <div class="overlay">
+            <div class="overtext">Hello World</div>
+          </div></div>
+         
+        </div>  
+        </div>--> 
+             <!--   <div id="property"> 
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-33PALMA/478803"> Loc-33 Palma </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-45BELFRY/474816"> Loc-45 Belfry </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/Loc54-PALMA/418022"> Loc-54 Palma </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-61RESIDENCEDELOURS/479118"> Loc-61 Résidence de l'Ours</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-67GRANDPRS/478761"> Loc-67 Grand Près </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-88BEAUMANIRE/473721"> Loc-88 Beaumanière </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-93PRFLEURI/484056"> Loc-93 Préfleuri </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-97GRANDPRS/484176"> Loc-97 Grand Près</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/Loc-116EUROPE/469047"> Loc-116 Europe </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/Loc-158RAINBOW/418781"> Loc-158 Rainbow </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-172FLAMINIA/484008"> Loc-172 Flaminia</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-180FONTAINEBLEAU/483978"> Loc-180 Fontainebleau</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-206PALMA/483975"> Loc-206 Palma </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-219AMBASSADEURS/473610"> Loc-219 Ambassadeurs</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-282AMBASSADEUR/484089"> Loc-282 Ambassadeurs </a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-284RAINBOW/484158"> Loc-284 Rainbow</a></p>
+              <p><a href="https://locationsdevacances.bookingturbo.com/fr/apartment/LOC-286FLAMINIA/474834"> Loc-286 Falmninia </a></p>
+           </div>-->
+           
+            
+        </div>
+        </div><!--right-->
+    </div>
+   <!-- <div id="disclaimer">
+        <div id="Dtext">
+        <p><b>Avertissement/Disclaimer: </b> dans le contexte de locations de vacances l'agence Immobilière Gaston Barras agit au nom du propriétaire. Les biens Nous nous occupons de gérer les biensLes appartements figurant sur ce siteweb représentent une partie du portefeuil actuel, sont disponible en Direct Booking uniquementles propriétés qu'une partie du portefeuil</p>
+    </div>
+    </div>-->
+
+
+ <!--FOOTER = CONTACT INFO-->
+    <footer id="footer" class="footer">
+
+        <!--  <script>setBackgrounds("footer");</script>-->
+        <div id="contact">
+       
+          <h3  style= "color:rgb(240, 239, 239); ">Contact</h3>
+        <p style= "color:rgb(187, 184, 184); ">Département des locations,<br> Agence Immobilière Gaston&Christian Barras, <br> info@agencebarras.ch. </p>
+    
+     </div><!--contact-->
+ 
+   
+     <div id="menu">
+
+      <h3  style= "color:rgb(240, 239, 239);  ">Menu</h3>
+      
+   <ul>
+    <a href="https://www.agencebarras.ch/Portals/www.agencebarras.ch/files/booking/directbooking.html" style="text-decoration: none;"> <li>Réservations</li> </a>
+    <a href="https://locationsdevacances.bookingturbo.com/fr/apartments" style="text-decoration: none;"> <li>Propriétés</li> </a>
+    <a href="https://www.agencebarras.ch/Portals/www.agencebarras.ch/files/booking/termesetconditions.html" style="text-decoration: none;"> <li>Termes et conditions</li> </a>
+      
+    </ul>
+ 
+</div> <!--menu-->
+<div id="agence">
+
+  <h3  style= "color:rgb(240, 239, 239); ">Agence</h3>
+<ul>
+  <a href="https://www.agencebarras.ch/fr/HomePage" style="text-decoration: none;"><li>Accueil</li></a>
+  <a href="https://www.agencebarras.ch/fr/SearchEngine/Acheter/ByPass/Tous" style="text-decoration: none;"> <li>Achat</li> </a>
+  <a href="https://www.agencebarras.ch/fr/contact" style="text-decoration: none;"> <li>Revente</li> </a>
+  
+</ul>
+
+</div><!--agence-->
+
+
+<div id="activities">
+  <h3  style= "color:rgb(240, 239, 239);  ">Nos activités</h3>
+<ul>
+  <a href="http://www.crans-montana-life.ch" style="text-decoration: none;"> <li>La Vie à Crans-Montana</li> </a>
+  <a href="https://www.nuitdesneiges.ch" style="text-decoration: none;"> <li>La Nuit des Neiges</li> </a>
+  <a href="https://www.omegaeuropeanmasters.com/fr/" style="text-decoration: none;"><li>Omega European Masters</li> </a>
+  
+</ul>
+
+</div> <!--activities-->
+</footer>
+            </div> <!--Section2-->  
+           
+    </div> <!--Section1-->
+   
+
+    
+
+
+    
+    <script>
+var indicator = document.getElementById("indicator");
+var background = document.getElementById("background");
+var textbox = document.getElementById("textbox");
+var section2 = document.getElementById("section2");
+var footer = document.getElementById("footer");
+var burger=document.getElementById("burger");
+var logo=document.getElementById("logo");
+var property=document.getElementById("property");
+        
+        
+function loadFunction(){
+    console.log ("here");
+     
+    background.className="m-fadeIn";
+    textbox.className="m-fadeIn";
+    burger.className="m-fadeIn";
+    logo.className="m-fadeIn";
+    
+}
+    
+    window.addEventListener("scroll", function (event) {
+           
+            var h=window.innerHeight;
+    console.log("WINDOW HEIGHT IS", h);
+        var scroll = 0;
+        scroll= this.scrollY;
+    //console.log(scroll) 
+    console.log("Y is", scroll);
+
+    if (scroll>100){
+      background.className="m-fadeOut";
+    textbox.className="m-fadeOut";
+    indicator.className="m-fadeOut";
+    logo.className="m-fadeOut";
+    
+    } 
+
+if (scroll>200){
+
+    burger.className="m-fadeOut";
+    section2.className="m-fadeIn";
+    footer.style.display="block";
+    
+
+}else if (95<scroll<100){
+  //textbox.style.display="block";
+    section2.className="m-fadeOut";
+    background.className="m-fadeIn";
+    textbox.className="m-fadeIn";
+    burger.className="m-fadeIn";
+    logo.className="m-fadeIn";
+ 
+} if (scroll>500){
+
+//textbox.style.display="none";
+}
+if (scroll>=1500){
+
+property.className="m-fadeIn";
+
+}
+
+else{
+    scroll=0;
+}
+        
+        },false);
+  
+  var coronapdf = document.getElementById("corona");
+  var cover = document.getElementById("cover");
+   
+function OpenOverlay(){
+  
+
+  cover.style.display="block";
+  coronapdf.style.display="block";
+}
+function closeOverlay(){
+  cover.style.display="none";
+  coronapdf.style.display="none";
+
+}
+ 
+   
+   
+   
+    </script>
+
+
+
+
+
+</main>
+</body>
+</html>
